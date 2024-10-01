@@ -1,0 +1,60 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+  /* display: flex;
+  flex-direction: column; */
+
+  
+  background-color: #1c1c1c;
+
+  margin: auto;
+}
+
+.row1, .row2, .row3, .row4, .row5 {
+
+}
+
+.buttons {
+    
+    text-align: center;
+    gap: 64px;
+    margin: 32px;
+  }
+
+
+
+
+#clear, #sign, #percent {
+    color: #1c1c1c;
+}
+
+#divide, #multiply, #add, #subtract, #equals {
+    background-color: #ff9500;
+}
+
+#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine, #dot {
+    background-color: #505050;;
+}
+
+button {
+    font-size: medium;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    width: 64px;
+    height: 64px;
+}
+
+#zero {
+    width: 128px;
+}
+
+button:hover {
+    filter: brightness(95%);
+}
