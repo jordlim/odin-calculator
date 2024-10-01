@@ -5,33 +5,66 @@ body {
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   text-align: center;
+  font-size: 64px;
+  
   /* display: flex;
   flex-direction: column; */
 
-  
+  color: white;
   background-color: #1c1c1c;
 
+  /* 64*4buttons + 16*3gap */
+  width: 304px;
+
   margin: auto;
+  margin-top: 128px;
+}
+
+#amount {
+    display: flex;
+    justify-content: right;
+    margin-bottom: 16px;
 }
 
 .row1, .row2, .row3, .row4, .row5 {
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
 }
 
 .buttons {
-    
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    gap: 64px;
-    margin: 32px;
-  }
+    gap: 16px;
+}
 
+button {
+    font-size: large;
+    font-weight: 512px;
 
+    color: white;
+    border: none;
 
+    border-radius: 32px;
+    width: 64px;
+    height: 64px;
+}
+
+button:hover {
+    filter: brightness(90%);
+    color: #1c1c1c;
+}
 
 #clear, #sign, #percent {
+    background-color: #d4d4d2;
     color: #1c1c1c;
+}
+#clear:hover, #sign:hover, #percent:hover {
+    color: white;
 }
 
 #divide, #multiply, #add, #subtract, #equals {
@@ -42,19 +75,7 @@ body {
     background-color: #505050;;
 }
 
-button {
-    font-size: medium;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    width: 64px;
-    height: 64px;
-}
-
 #zero {
-    width: 128px;
+    width: 144px;
 }
 
-button:hover {
-    filter: brightness(95%);
-}
