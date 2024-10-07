@@ -47,18 +47,20 @@ function calc() {
                 op1 = val;
             }
 
-            // % (divide by 100)
+            // %
             if (id == "percent") {
-
+                // TODO: Divide by 100
+                // Need to differentiate between op1 and op2
             }
 
             // 0
             if (id == "zero") {
-                
+                if (display.textContent != "0") {
+                // TODO: Append zero and update display + op
+                }
             }
 
             // 1-9
-
             // TODO: fix bug where clicking a number after equals doesn't reset display and operator
             nums=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
             if (nums.includes(id)){
@@ -84,6 +86,8 @@ function calc() {
             // .
             if (id == "dot") {
                 if ( (display.textContent).includes('.') == false) {
+
+                    // TODO: Append period and update display + op
                     // Need to differentiate between op1 and op2
                 }
             }
@@ -91,7 +95,7 @@ function calc() {
 
             // +/-
             if (id == "sign") {
-                // Multiply by -1
+                // TODO: Multiply by -1 and update display + op
                 // Need to differentiate between op1 and op2
             }
 
@@ -103,7 +107,6 @@ function calc() {
                 op2 = "";
                 eval = "";
             }
-
 
             // Adjust last button press at end to prevent operator glitches
             last = id;
