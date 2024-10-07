@@ -26,6 +26,7 @@ body {
     display: flex;
     justify-content: right;
     margin-bottom: 16px;
+    overflow: hidden;
 }
 
 .row1, .row2, .row3, .row4, .row5 {
