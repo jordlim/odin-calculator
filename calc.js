@@ -13,9 +13,6 @@ function calc() {
 
     let last = "";
 
-    // Track if first evaluation is done
-    let done = false;
-
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
         
@@ -63,7 +60,7 @@ function calc() {
             // 1-9
             // TODO: fix bug where clicking a number after equals doesn't reset display and operator
             nums=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
-            if (nums.includes(id)){
+            if (nums.includes(id) || id == "dot"){
                 if (op1 == "") {
                     display.textContent = "";
                 }
@@ -82,16 +79,6 @@ function calc() {
                 }
 
             }
-                    
-            // .
-            if (id == "dot") {
-                if ( (display.textContent).includes('.') == false) {
-
-                    // TODO: Append period and update display + op
-                    // Need to differentiate between op1 and op2
-                }
-            }
-            
 
             // +/-
             if (id == "sign") {
@@ -126,9 +113,10 @@ function operate(operator, op1, op2) {
         case "subtract":
             return op1 - op2;
         case "multiply":
-            return op1 * op2;
+            return (op1 * op2).toFixed(3);
         case "divide":
-            return (op1 / op2).toFixed(2);
+            // TODO: Prevent division by 0 by returning "Error"
+            return (op1 / op2).toFixed(3);
     }
 }
 
