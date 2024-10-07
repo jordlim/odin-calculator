@@ -26,7 +26,7 @@ function calc() {
                 c.textContent = "C";
             }
 
-            // +, -, *, / (execute, clear stack, invert color)
+            // +, -, *, /
             if (id == "add" || id == "subtract" || id == "multiply" || id == "divide") {
                 if (op2 != "" && last != "equals") {
                     let val = operate(eval, op1, op2);
@@ -37,7 +37,7 @@ function calc() {
                 eval = id;
             }
 
-            // = (execute last op and number, change new op1 to new val)
+            // =
             if (id == "equals" && op2 != "") {
                 let val = operate(eval, op1, op2);
                 display.textContent = val;
@@ -50,20 +50,25 @@ function calc() {
                 // Need to differentiate between op1 and op2
             }
 
-            // 0
-            if (id == "zero") {
-                if (display.textContent != "0") {
-                // TODO: Append zero and update display + op
-                }
-            }
-
             // 1-9
-            // TODO: fix bug where clicking a number after equals doesn't reset display and operator
-            nums=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+            nums=["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
             if (nums.includes(id) || id == "dot"){
                 if (op1 == "") {
                     display.textContent = "";
                 }
+
+                // OPTIONAL TODO: fix bug where clicking a number after equals doesn't reset display and operator
+                // NOTE: Ensure it doesn't remove repeat operation when clicking equal sign
+                // if (last == "equals") {
+                //     display.textContent = "";
+                //     op2 = "";
+                //     eval = "";
+                // }
+
+                // TODO: Fix bug allowing multiple decimal points
+                // TODO: Fix bug allowing zeros with no numbers
+
+
                 if (eval == "") {
                     display.textContent = display.textContent + text;
                     op1 = op1.concat('', text.replace(/\s/g, ""));
@@ -77,7 +82,6 @@ function calc() {
                     display.textContent = display.textContent + text;
                     op2 = op2.concat('', text.replace(/\s/g, ""));
                 }
-
             }
 
             // +/-
@@ -113,6 +117,7 @@ function operate(operator, op1, op2) {
         case "subtract":
             return op1 - op2;
         case "multiply":
+
             return (op1 * op2).toFixed(3);
         case "divide":
             // TODO: Prevent division by 0 by returning "Error"
