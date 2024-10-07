@@ -11,6 +11,8 @@ function calc() {
     let op2 = "";
     let eval = "";
 
+    let last = "";
+
     // Track if first evaluation is done
     let done = false;
 
@@ -19,6 +21,7 @@ function calc() {
         
             let id = btn.id;
             let text = btn.textContent;
+            
 
             // On any button, change to C if AC
             let c = document.getElementById("clear");
@@ -26,11 +29,9 @@ function calc() {
                 c.textContent = "C";
             }
 
-            // if evaluated, then operator + X uses op2
-
             // +, -, *, / (execute, clear stack, invert color)
             if (id == "add" || id == "subtract" || id == "multiply" || id == "divide") {
-                if (op2 != "") {
+                if (op2 != "" && last != "equals") {
                     let val = operate(eval, op1, op2);
                     display.textContent = val;
                     op1 = val;
@@ -47,10 +48,18 @@ function calc() {
             }
 
             // % (divide by 100)
+            if (id == "percent") {
+
+            }
 
             // 0
+            if (id == "zero") {
+                
+            }
 
             // 1-9
+
+            // TODO: fix bug where clicking a number after equals doesn't reset display and operator
             nums=["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
             if (nums.includes(id)){
                 if (op1 == "") {
@@ -70,14 +79,23 @@ function calc() {
                     op2 = op2.concat('', text.replace(/\s/g, ""));
                 }
 
-                
             }
                     
             // .
+            if (id == "dot") {
+                if ( (display.textContent).includes('.') == false) {
+                    // Need to differentiate between op1 and op2
+                }
+            }
+            
 
             // +/-
+            if (id == "sign") {
+                // Multiply by -1
+                // Need to differentiate between op1 and op2
+            }
 
-            // C (clear and change to AC)
+            // C
             if (id == "clear") {
                 display.textContent = "0";
                 btn.textContent = "AC";
@@ -85,7 +103,10 @@ function calc() {
                 op2 = "";
                 eval = "";
             }
-            
+
+
+            // Adjust last button press at end to prevent operator glitches
+            last = id;
         });
     });
 
