@@ -17,7 +17,6 @@ function calc() {
             let id = btn.id;
             let text = btn.textContent;
             
-
             // On any button press, change to C if AC
             let c = document.getElementById("clear");
             if (c.textContent == "AC") {
@@ -49,11 +48,20 @@ function calc() {
                 op1 = val;
             }
 
-            // 1-9
+            // 0-9
             else if (nums.includes(id)){
-                if (op1 == "") {
+                
+            
+                // Initial clear, and prevent duplicate zero workaround
+                if (op1 == "" || op1 == "0") {
+                    op1 = "";
                     display.textContent = "";
                 }
+                if (op2 == "" || op2 == "0") {
+                    op2 = "";
+                    display.textContent = "";
+                }
+
 
                 // OPTIONAL TODO: fix bug where clicking a number after equals doesn't reset display and operator
                 // NOTE: Ensure it doesn't remove repeat operation when clicking equal sign
