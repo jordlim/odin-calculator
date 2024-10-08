@@ -12,6 +12,7 @@ function calc() {
     let eval = "";
 
     let last = "";
+    nums=["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
 
     buttons.forEach((btn) => {
         btn.addEventListener("click", () => {
@@ -38,21 +39,20 @@ function calc() {
             }
 
             // =
-            if (id == "equals" && op2 != "") {
+            else if (id == "equals" && op2 != "") {
                 let val = operate(eval, op1, op2);
                 display.textContent = val;
                 op1 = val;
             }
 
             // %
-            if (id == "percent") {
+            else if (id == "percent") {
                 // TODO: Divide by 100
                 // Need to differentiate between op1 and op2
             }
 
             // 1-9
-            nums=["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
-            if (nums.includes(id) || id == "dot"){
+            else if (nums.includes(id)){
                 if (op1 == "") {
                     display.textContent = "";
                 }
@@ -65,10 +65,9 @@ function calc() {
                 //     eval = "";
                 // }
 
-                // TODO: Fix bug allowing multiple decimal points
                 // TODO: Fix bug allowing zeros with no numbers
-
-
+                
+                // 0-9
                 if (eval == "") {
                     display.textContent = display.textContent + text;
                     op1 = op1.concat('', text.replace(/\s/g, ""));
@@ -84,14 +83,35 @@ function calc() {
                 }
             }
 
+            else if (id == "dot") {
+                console.log("z");
+                if ((display.textContent).includes('.') == false) {
+                    console.log("a");
+                    if (eval == "") {
+                        display.textContent = display.textContent + text;
+                        op1 = op1.concat('', text.replace(/\s/g, ""));
+                    }
+                    else if (eval != "" && op2 == "") {
+                        display.textContent = "";
+                        display.textContent = display.textContent + text;
+                        op2 = op2.concat('', text.replace(/\s/g, ""));
+                    }
+                    else if (eval != "" && op2 != "") {
+                        display.textContent = display.textContent + text;
+                        op2 = op2.concat('', text.replace(/\s/g, ""));
+                    }
+
+                }
+            }
+
             // +/-
-            if (id == "sign") {
+            else if (id == "sign") {
                 // TODO: Multiply by -1 and update display + op
                 // Need to differentiate between op1 and op2
             }
 
             // C
-            if (id == "clear") {
+            else if (id == "clear") {
                 display.textContent = "0";
                 btn.textContent = "AC";
                 op1 = "";
