@@ -54,9 +54,6 @@ function calc() {
                 if (op1 == "") {
                     display.textContent = "";
                 }
-                // else if (op1 == "" && id == "zero") {
-                //     display.textContent = "0";
-                // }
 
                 // OPTIONAL TODO: fix bug where clicking a number after equals doesn't reset display and operator
                 // NOTE: Ensure it doesn't remove repeat operation when clicking equal sign
@@ -136,7 +133,9 @@ function operate(operator, op1, op2) {
 
             return parseFloat( (op1 * op2).toFixed(3) );
         case "divide":
-            // TODO: Prevent division by 0 by returning "Error"
+            if (op2 == 0) {
+                return "Error";
+            }
             return parseFloat( (op1 / op2).toFixed(3) );
     }
 }
